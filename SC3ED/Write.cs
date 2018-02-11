@@ -23,28 +23,28 @@ using System.Collections.Generic;
 
 namespace SC3ED
 {
-    partial class Write
-    {
-        public static FileStream Stream;
-        public static Main Window;
-        public static int Num;
-        public static byte[] FileBuffer;
+	partial class Write
+	{
+		public static FileStream Stream;
+		public static Main Window;
+		public static int Num;
+		public static byte[] FileBuffer;
 
-        public static void Save(string FileName, Main WindowRef)
-        {
+		public static void Save(string FileName, Main WindowRef)
+		{
 
-            Stream = new FileStream(FileName, FileMode.OpenOrCreate);
-            int FileSize = (int)Stream.Length;  // get file length
-            FileBuffer = new byte[FileSize];    // create buffer
-            Window = WindowRef;
+			Stream = new FileStream(FileName, FileMode.OpenOrCreate);
+			int FileSize = (int)Stream.Length;  // get file length
+			FileBuffer = new byte[FileSize];    // create buffer
+			Window = WindowRef;
 
-            ShipStatus();
-            Crew();
-            Devices();
-            Artifacts();
+			ShipStatus();
+			Crew();
+			Devices();
+			Artifacts();
 
-            Stream.Close();
-            Stream.Dispose();
-        }
-    }
+			Stream.Close();
+			Stream.Dispose();
+		}
+	}
 }

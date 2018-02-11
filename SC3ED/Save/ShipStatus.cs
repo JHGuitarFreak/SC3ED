@@ -22,26 +22,26 @@ using System.IO;
 
 namespace SC3ED
 {
-    partial class Write
-    {
-        public static void ShipStatus()
-        {
-            // Save Name
-            Stream.Seek(Vars.SaveName, SeekOrigin.Begin);
-            FileBuffer = Functions.StringToByte(Window.SaveName.Text, 78);
-            Stream.Write(FileBuffer, 0, 78);
+	partial class Write
+	{
+		public static void ShipStatus()
+		{
+			// Save Name
+			Stream.Seek(Vars.SaveName, SeekOrigin.Begin);
+			FileBuffer = Functions.StringToByte(Window.SaveName.Text, 78);
+			Stream.Write(FileBuffer, 0, 78);
 
-            Functions.WriteOffset(Vars.Clock, Window.Clock.Value, 2, 65535);
-            Functions.WriteOffset(Vars.CurrentDay, (Window.CurrentDay.Value - 1), 2, 65535);
-            Functions.WriteOffset(Vars.ResUnits, Window.ResUnits.Value, 4, 99999999);
-            Functions.WriteOffset(Vars.Fuel, Window.Fuel.Value, 4, 99999999);
-            Functions.WriteOffset(Vars.LandingPods, Window.LandingPods.Value, 4, 99999999);
+			Functions.WriteOffset(Vars.Clock, Window.Clock.Value, 2, 65535);
+			Functions.WriteOffset(Vars.CurrentDay, (Window.CurrentDay.Value - 1), 2, 65535);
+			Functions.WriteOffset(Vars.ResUnits, Window.ResUnits.Value, 4, 99999999);
+			Functions.WriteOffset(Vars.Fuel, Window.Fuel.Value, 4, 99999999);
+			Functions.WriteOffset(Vars.LandingPods, Window.LandingPods.Value, 4, 99999999);
 
-            
-            Stream.Seek(Vars.CurrentStar, SeekOrigin.Begin);
-            Num = (int)Window.CurrentStar.SelectedIndex;
-            FileBuffer = BitConverter.GetBytes(Num);
-            Stream.Write(FileBuffer, 0, 1);
-        }
-    }
+			
+			Stream.Seek(Vars.CurrentStar, SeekOrigin.Begin);
+			Num = (int)Window.CurrentStar.SelectedIndex;
+			FileBuffer = BitConverter.GetBytes(Num);
+			Stream.Write(FileBuffer, 0, 1);
+		}
+	}
 }

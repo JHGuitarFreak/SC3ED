@@ -24,26 +24,26 @@ using System.Linq;
 
 namespace SC3ED
 {
-    partial class Read
-    {
-        public static void ShipStatus()
-        {
-            // Save Name
-            Stream.Seek(Vars.SaveName, SeekOrigin.Begin);
-            Stream.Read(FileBuffer, 0, 78);
-            Window.SaveName.Text = Encoding.UTF8.GetString(FileBuffer);
-            
-            Window.Clock.Value = Functions.ReadOffset(Vars.Clock, 2, 16);
-            Window.CurrentDay.Value = (Functions.ReadOffset(Vars.CurrentDay, 2, 16) + 1);
+	partial class Read
+	{
+		public static void ShipStatus()
+		{
+			// Save Name
+			Stream.Seek(Vars.SaveName, SeekOrigin.Begin);
+			Stream.Read(FileBuffer, 0, 78);
+			Window.SaveName.Text = Encoding.UTF8.GetString(FileBuffer);
+			
+			Window.Clock.Value = Functions.ReadOffset(Vars.Clock, 2, 16);
+			Window.CurrentDay.Value = (Functions.ReadOffset(Vars.CurrentDay, 2, 16) + 1);
 
-            Window.ResUnits.Value = Functions.ReadOffset(Vars.ResUnits, 4);
-            Window.Fuel.Value = Functions.ReadOffset(Vars.Fuel, 4);
-            Window.LandingPods.Value = Functions.ReadOffset(Vars.LandingPods, 4);
+			Window.ResUnits.Value = Functions.ReadOffset(Vars.ResUnits, 4);
+			Window.Fuel.Value = Functions.ReadOffset(Vars.Fuel, 4);
+			Window.LandingPods.Value = Functions.ReadOffset(Vars.LandingPods, 4);
 
-            
-            Stream.Seek(Vars.CurrentStar, SeekOrigin.Begin);
-            Stream.Read(FileBuffer, 0, 1);
-            Window.CurrentStar.SelectedIndex = FileBuffer[0];
-        }
-    }
+			
+			Stream.Seek(Vars.CurrentStar, SeekOrigin.Begin);
+			Stream.Read(FileBuffer, 0, 1);
+			Window.CurrentStar.SelectedIndex = FileBuffer[0];
+		}
+	}
 }

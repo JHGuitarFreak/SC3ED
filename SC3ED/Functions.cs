@@ -22,55 +22,55 @@ using System.Windows.Forms;
 
 namespace SC3ED
 {
-    internal class Functions
-    {    
-        public static byte[] StringToByte(string String, int arrayLength){
-            byte[] array = new byte[Math.Max(arrayLength, String.Length)];
-            for (int i = 0; i < arrayLength; i++){
-                array[i] = 0;
-            }
-            for (int j = 0; j < String.Length; j++){
-                array[j] = (byte)String[j];
-            }
-            return array;
-        }
+	internal class Functions
+	{    
+		public static byte[] StringToByte(string String, int arrayLength){
+			byte[] array = new byte[Math.Max(arrayLength, String.Length)];
+			for (int i = 0; i < arrayLength; i++){
+				array[i] = 0;
+			}
+			for (int j = 0; j < String.Length; j++){
+				array[j] = (byte)String[j];
+			}
+			return array;
+		}
 
-        public static int ReadOffset(int Offset, int ByteLength, int Is16or32 = 32){
-            Read.Stream.Seek(Offset, SeekOrigin.Begin);
-            Read.Stream.Read(Read.FileBuffer, 0, ByteLength);
-            int Query = (Is16or32 == 16) ? BitConverter.ToUInt16(Read.FileBuffer, 0) : BitConverter.ToInt32(Read.FileBuffer, 0);
-            return Query;
-        }
-        public static bool ReadOffsetBool(int Offset, bool IsResearch = false){
-            bool ReadBool;
-            Read.Stream.Seek(Offset, SeekOrigin.Begin);
-            Read.Stream.Read(Read.FileBuffer, 0, 1);
-            if (IsResearch == true){
-                ReadBool = (Read.FileBuffer[0] == 36) ? true : false;
-            } else {
-                ReadBool = (Read.FileBuffer[0] == 255) ? true : false;
-            }
-            return ReadBool;
-        }
+		public static int ReadOffset(int Offset, int ByteLength, int Is16or32 = 32){
+			Read.Stream.Seek(Offset, SeekOrigin.Begin);
+			Read.Stream.Read(Read.FileBuffer, 0, ByteLength);
+			int Query = (Is16or32 == 16) ? BitConverter.ToUInt16(Read.FileBuffer, 0) : BitConverter.ToInt32(Read.FileBuffer, 0);
+			return Query;
+		}
+		public static bool ReadOffsetBool(int Offset, bool IsResearch = false){
+			bool ReadBool;
+			Read.Stream.Seek(Offset, SeekOrigin.Begin);
+			Read.Stream.Read(Read.FileBuffer, 0, 1);
+			if (IsResearch == true){
+				ReadBool = (Read.FileBuffer[0] == 36) ? true : false;
+			} else {
+				ReadBool = (Read.FileBuffer[0] == 255) ? true : false;
+			}
+			return ReadBool;
+		}
 
-        public static void WriteOffset(int Offset, decimal SpinnerValue, int ByteLength, int Limit){
-            Write.Stream.Seek(Offset, SeekOrigin.Begin);
-            Write.Num = Decimal.ToInt32(SpinnerValue);
-            if (Write.Num >= Limit){
-                Write.Num = Limit;
-            }
-            Write.FileBuffer = BitConverter.GetBytes(Write.Num);
-            Write.Stream.Write(Write.FileBuffer, 0, ByteLength);
-        }
-        public static void WriteOffsetBool(int Offset, bool Checked, bool IsResearch = false){
-            Write.Stream.Seek(Offset, SeekOrigin.Begin);
-            if (IsResearch == true){
-                Write.Num = (Checked == true) ? 36 : 4;
-            } else {
-                Write.Num = (Checked == true) ? 255 : 254;
-            }
-            Write.FileBuffer = BitConverter.GetBytes(Write.Num);
-            Write.Stream.Write(Write.FileBuffer, 0, 1);
-        }
-    }
+		public static void WriteOffset(int Offset, decimal SpinnerValue, int ByteLength, int Limit){
+			Write.Stream.Seek(Offset, SeekOrigin.Begin);
+			Write.Num = Decimal.ToInt32(SpinnerValue);
+			if (Write.Num >= Limit){
+				Write.Num = Limit;
+			}
+			Write.FileBuffer = BitConverter.GetBytes(Write.Num);
+			Write.Stream.Write(Write.FileBuffer, 0, ByteLength);
+		}
+		public static void WriteOffsetBool(int Offset, bool Checked, bool IsResearch = false){
+			Write.Stream.Seek(Offset, SeekOrigin.Begin);
+			if (IsResearch == true){
+				Write.Num = (Checked == true) ? 36 : 4;
+			} else {
+				Write.Num = (Checked == true) ? 255 : 254;
+			}
+			Write.FileBuffer = BitConverter.GetBytes(Write.Num);
+			Write.Stream.Write(Write.FileBuffer, 0, 1);
+		}
+	}
 }

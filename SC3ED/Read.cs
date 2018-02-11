@@ -23,32 +23,32 @@ using System.Collections.Generic;
 
 namespace SC3ED
 {
-    partial class Read
-    {
-        public static FileStream Stream;
-        public static Main Window;
-        public static byte[] FileBuffer;
+	partial class Read
+	{
+		public static FileStream Stream;
+		public static Main Window;
+		public static byte[] FileBuffer;
 
-        public static void Open(string FileName, Main window)
-        {
-            if (!File.Exists(FileName))
-            {
-                MessageBox.Show("Could not find path: " + FileName);
-                return;
-            }
+		public static void Open(string FileName, Main window)
+		{
+			if (!File.Exists(FileName))
+			{
+				MessageBox.Show("Could not find path: " + FileName);
+				return;
+			}
 
-            Stream = new FileStream(FileName, FileMode.Open);
-            int FileSize = (int)Stream.Length;  // get file length
-            FileBuffer = new byte[FileSize];    // create buffer
-            Window = window;
+			Stream = new FileStream(FileName, FileMode.Open);
+			int FileSize = (int)Stream.Length;  // get file length
+			FileBuffer = new byte[FileSize];    // create buffer
+			Window = window;
 
-            ShipStatus();
-            Crew();
-            Devices();
-            Artifacts();
+			ShipStatus();
+			Crew();
+			Devices();
+			Artifacts();
 
-            Stream.Close();
-            Stream.Dispose();
-        }    
-    }    
+			Stream.Close();
+			Stream.Dispose();
+		}    
+	}    
 }
