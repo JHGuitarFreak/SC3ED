@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC3ED", "SC3ED\SC3ED.csproj", "{B4E2967D-435E-4264-BCF7-9CB404D8404C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4E2967D-435E-4264-BCF7-9CB404D8404C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E2967D-435E-4264-BCF7-9CB404D8404C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E2967D-435E-4264-BCF7-9CB404D8404C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E2967D-435E-4264-BCF7-9CB404D8404C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
