@@ -2530,7 +2530,7 @@ namespace SC3ED
 		this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 		this.MaximizeBox = false;
 		this.Name = "Main";
-		this.Text = "Star Control 3 Editor";
+		this.Text = "Star Control 3 Editor v0.1";
 		this.tabControl1.ResumeLayout(false);
 		this.tabMisc.ResumeLayout(false);
 		this.ShipStatus.ResumeLayout(false);
